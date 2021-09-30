@@ -184,10 +184,6 @@ void setup() {
   bordePileta = loadImage("piletaBorde.png");
   pileta = new FBox(anchoPileta, altoPileta);
   pileta.setPosition(width-anchoPileta/2, height - altoPileta/2 ); 
-  //le sumo el ancho de la pileta dividido dos porque la pos x del
-  //cuadrao la determina el center mode, no corner> despues me di cuenta que 
-  //restrle el ancho entero y despues sumarle la mitad , era lo mismo que directa-
-  // solo sumarle la mitad
   mundo.add(pileta);
   pileta.attachImage(bordePileta);
   pileta.setStatic(true); 
