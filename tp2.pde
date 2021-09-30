@@ -140,16 +140,11 @@ void setup() {
   mundo.setEdges();//crea unos bordes para que los elementos no se escapen del mundo
   //los bordes no se ven porque para actualizarse necesira llamar
   //a dos metodos en el draw
-  mundo.setEdgesFriction(100);
-
-  //agua = loadImage("agua.png");
-
-  dinosaurioInflable = loadImage("dinosaurioInflable.png");
-
-  pixel_font = createFont("FreePixel.ttf", 128);
+  mundo.setEdgesFriction(100)
+    dinosaurioInflable = loadImage("dinosaurioInflable.png")
+    pixel_font = createFont("FreePixel.ttf", 128);
   arcade_font = createFont("ArcadeIn.ttf", 128);
   textFont(pixel_font);
-
   espera = second();
 
   /* Loop agua */
@@ -177,8 +172,6 @@ void setup() {
 
   caja = new FBox(ancho, alto);
   caja.setPosition(100, 200);
-  //que la incialice aca no significa que se dibuje porque no
-  //agrege la caja al mundo 
   mundo.setGravity(0, 500);
   mundo.add(caja);
   caja.attachImage(lata);
@@ -188,10 +181,7 @@ void setup() {
   caja.setName("botellaCoca");
 
   /* pileta donde charly se va a sentar*/
-
-
   bordePileta = loadImage("piletaBorde.png");
-
   pileta = new FBox(anchoPileta, altoPileta);
   pileta.setPosition(width-anchoPileta/2, height - altoPileta/2 ); 
   //le sumo el ancho de la pileta dividido dos porque la pos x del
@@ -200,23 +190,20 @@ void setup() {
   // solo sumarle la mitad
   mundo.add(pileta);
   pileta.attachImage(bordePileta);
-  pileta.setStatic(true); //se queda dura pero se sigue moviendo si le hago click
-  //como hago para que no pueda moverse al objeto con el mouse?
+  pileta.setStatic(true); 
   pileta.setGrabbable(false);
+
   /* botella */
-
   botellaCoca = loadImage("botella.png");
-
   botella = new FBox(ancho, altoBotella);
   botella.setName("botellaCoca");
   botella.setPosition(200, 200);
-  //que la incialice aca no significa que se dibuje porque no
-  //agrege la caja al mundo 
   mundo.add(botella);
   botella.attachImage(botellaCoca);
   botella.setRestitution(0.1);
   botella.setFriction(6);
   botella.setDensity(4);
+
   /* Pelota */
   Pelota = loadImage("pelota.png");
   bola = new FCircle(100);
@@ -228,9 +215,7 @@ void setup() {
   /*Charly*/
 
   /* Loop charly */
-
   for (int i=0; i < PngCharly.length; i++) {
-
     PngCharly[i] = loadImage("charly_"+i+".png");
   }
 
@@ -239,14 +224,8 @@ void setup() {
 
   Charly = new FBox(anchoCharly, altoCharly);
   Charly.setPosition(977, 126); 
-  //le sumo el ancho de la pileta dividido dos porque la pos x del
-  //cuadrao la determina el center mode, no corner> despues me di cuenta que 
-  //restrle el ancho entero y despues sumarle la mitad , era lo mismo que directa-
-  // solo sumarle la mitad
   mundo.add(Charly);
-  //Charly.attachImage(Charlyimg);
-  Charly.setStatic(true); //se queda dura pero se sigue moviendo si le hago click
-  //como hago para que no pueda moverse al objeto con el mouse?
+  Charly.setStatic(true);
   Charly.setGrabbable(false);
   Charly.setNoStroke();
   Charly.setNoFill();
@@ -289,10 +268,7 @@ void setup() {
   }
 
 
-
-
-  //estos son los circulitos que unen todas las lineas con los hilos
-
+  //estos son los circulos que unen todas las lineas con los hilos
 
   FCircle left = new FCircle(10);
   left.setStatic(true);
@@ -309,10 +285,7 @@ void setup() {
   mundo.add(right);
 
 
-
   /*-------------------------------------------------*/
-
-
 
   for (int i=0; i<steps.length; i++) {
     steps[i] = new FBox(boxWidth, 10);
@@ -327,10 +300,6 @@ void setup() {
     //construye la union entre los cuerpos del medio
 
     FDistanceJoint junta = new FDistanceJoint(steps[i-1], steps[i]);
-    //junta.setAnchor1(1, 0);
-    //junta.setAnchor2(-1, 0);
-    // junta.setFrequency(frequency);
-    // junta.setDamping(damping);
     junta.setNoStroke();
     junta.setNoFill();
     junta.setLength(0.2);
@@ -341,10 +310,7 @@ void setup() {
   //constituye la distancia de la soga de la izquierda y el primer cuerpo
 
   FDistanceJoint juntaPrincipio = new FDistanceJoint(steps[0], left);
-  //juntaPrincipio.setAnchor1(-boxWidth/2, 0);
-  //juntaPrincipio.setAnchor2(0, 0);
   juntaPrincipio.setFrequency(frequency);
-  //juntaPrincipio.setDamping(damping);
   juntaPrincipio.setLength(0.2);
   juntaPrincipio.setNoFill();
   juntaPrincipio.setNoStroke(); 
@@ -354,38 +320,24 @@ void setup() {
   //constituye la distancia de la soga de la derecha y el primer cuerpo
 
   FDistanceJoint juntaFinal = new FDistanceJoint(steps[steps.length-1], right);
-
-  juntaFinal.setLength(30);
-
-
-  //juntaFinal.setAnchor1(boxWidth/2, 0);
-  //juntaFinal.setAnchor2(0, 0);
-  // juntaFinal.setFrequency(frequency);
-  //juntaFinal.setDamping(damping);
-  juntaFinal.setLength(1);
-  //juntaFinal.calculateLength();
-
+  juntaFinal.setLength(30)
+    juntaFinal.setLength(1);
   juntaFinal.setNoFill();
   juntaFinal.setNoStroke();
-  mundo.add(juntaFinal);
+  mundo.add(juntaFinal)
 
-
-
-  Fondo = loadImage("fondo.png");
-
+    Fondo = loadImage("fondo.png");
   Inicio = loadImage("1.png");
   Perdiste = loadImage("2.png");
   Ganaste = loadImage("3.png");
-  Boton = loadImage("4.png");
-
-  // Flecha= loadImage("flecha.png");
-  clock =loadImage("clock.png");
+  Boton = loadImage("4.png")
+    clock =loadImage("clock.png");
   green = loadImage("green.png");
 
 
   //MOUSE JOINT
 
-  mousejoint = new FMouseJoint(bola, 100, 550); //importante
+  mousejoint = new FMouseJoint(bola, 100, 550); 
   mousejoint.setFrequency(400000);
   mousejoint.setNoStroke();
   mundo.add(mousejoint);
@@ -395,22 +347,16 @@ void setup() {
 void draw() {
 
 
-  //CAMARA
+  //CAMARA y detección de mano
+
   if (pulgar.x!=0 && indice.x!=0) {
     seTocan = dist(pulgar.x, pulgar.y, indice.x, indice.y) < umbralDistancia;
-
 
     down = !antesSeTocaban && seTocan;
     up = antesSeTocaban && !seTocan;
 
     antesSeTocaban = seTocan;
   }
-
-  //  println(seTocan);
-  //println(puntero.x);
-  //println(puntero.y);
-  //println(pulgar.x);
-  //println(down);
 
 
   indiceFilt.x = lerp(indiceFilt.x, indice.x, amortiguacion);
@@ -425,20 +371,13 @@ void draw() {
 
 
   //INTERACCIÓN CON PELOTA
-  // mousejoint.setTarget(puntero.x, puntero.y);
+
   mousejoint.setTarget(map(puntero.x, 400, 930, 0, width), map(puntero.y, 90, 420, 450, height));
 
 
   if (pantalla == 0) {
     background(164, 65, 195);
     image(Inicio, 0, 0);
-
-    //rectMode(CENTER); //ESTE SORETE ERA EL DEL BUG DIOS, la solucion fue clavarle un corner mode en la pantalla siguiente
-    //fill(0, 185, 238);
-    //rect(width/2, height-200, 500, 50);
-    //fill(80, 196, 55, color_de_carga);
-    //rect(width/2, height-200, 500, 50);
-    //  strokeWeight(4);
 
     //HARDCODE
     if (color_de_carga>35) {
@@ -464,24 +403,11 @@ void draw() {
     }
 
 
-    //println(seTocan);
-    //println("color="+color_de_carga);
 
-
-    //   if ( puntero.y>0 && puntero.y<50) {
     if ( seTocan) {
-
-      //if ( 1>0) {
-      color_de_carga++;
-
-
-      // println(color_de_carga);
+      color_de_carga++; //barra de carga inicial
     }
 
-    //fill(255);
-    //textSize(24);
-    //text("Levantá la mano para empezar", width/2, height-195);
-    // println( puntero.y);
 
     if (color_de_carga==255) {
       pantalla=1;
@@ -493,15 +419,12 @@ void draw() {
 
 
     if (mouseX>870 && mouseX<929 && mouseY>468 && mouseY<523) {
-
       image(Flecha, 0, 0);
     } 
 
 
     textSize(20);
     textAlign(CENTER);
-
-    //     text("Pulsa s para iniciar", width/2, 50);
   } else if (pantalla==1) {
 
     rectMode(CORNER);
@@ -509,7 +432,7 @@ void draw() {
     Fondo.resize(1000, 800);
     bordePileta.resize(120, 550);
     image(Fondo, 0, 0);
-    
+
 
     //cambio color fondo
 
@@ -521,12 +444,9 @@ void draw() {
       transparencia=0;
     }
 
-    //image(agua,0,0);
-
     mundo.step();//hace los calculos matematicos en los cuerpos que interactuan en 
     //frame
     mundo.draw(); //dibuja el mundo de fisica en el lugar
-
 
     int imageIndex = int( frameCount*velocidad_agua %PngAgua.length );
 
@@ -535,11 +455,11 @@ void draw() {
 
     imageIndex= int(imageIndex+1)%PngAgua.length;
 
-    //HARDCODE
+    //HARDCODE 2
 
-    //if (tiempo<30 && tiempo >=25) {
+
     image(barra[0], 125, 50);
-    //}
+
     if (tiempo<=23) {
       image(barra[1], 125, 50);
     }
@@ -556,24 +476,8 @@ void draw() {
 
 
     image(clock, 70, 50-12);
-
-    //textSize(36);
-    //fill(255,255,0);
-    // noStroke();
-    //ellipse(50,50,50,50);
-    textSize(25);
-
     tiempo= round(timeLeft/100);
-    //text("Tiempo: "+tiempo, width/2, height/2);
-
-    //    textSize(36);
-    //if (tiempo>25) {
-    //fill(200);
-    //text("Dale a Charly su gaseosa", width/2, 125);
-    // text("¡Sólo tenés 30 segundos!", width/2, 70);
-    //}
     image(PngCharly[imageIndex2], 440, -100, 450*1.5, 300*1.5);
-
 
     imageIndex2=(imageIndex+1)%PngCharly.length;
     timeLeft--;
@@ -587,40 +491,30 @@ void draw() {
     }
 
 
-
-
     if (timeLeft == 0 && pantalla == 1) {
       pantalla = 3;
       if (!perdiste.isPlaying()) {
         perdiste.amp(.3);
         perdiste.play();
         cancion.stop();
-        //estoyVerde.pause();
         timeLeft = 3000;
       }
     }
   } else if (pantalla==3) {
 
     image(Perdiste, 0, 0);
-
     if ( puntero.y>0 && puntero.y<50) {
-
       restart();
       pantalla=0;
     }
   } else if (pantalla==2) {
-
     image(Ganaste, 0, 0);
-
-
     if ( puntero.y>0 && puntero.y<50) {
       restart();
       contador=0;
       pantalla=0;
     }
   }
-
-
 
 
   /* botella */
@@ -639,32 +533,21 @@ void draw() {
   caja.setDamping(DampingL);
   caja.setAngularDamping(5);
 
-
-
-
-
   if ( botella.getY()>puenteY) {
-
-
     friccionB = 30;
     densidadB = 1;
-
     DampingB = 5;
   } else {
-
     friccionB =30;
     densidadB = 10;
     DampingB = 1 ;
   }
 
   if ( caja.getY()>puenteY) {
-
-
     friccionL = 30;
     densidadL = 3;
     DampingL = 4;
   } else {
-
     friccionL =30;
     densidadL = 10;
     DampingL = 2;
@@ -673,21 +556,14 @@ void draw() {
 
 void contactStarted(FContact contacto) {
 
-  //nunca se cual es el uno y cual es el dos, por lo tanto puedo averiguar 
-  //los nombres de los objetos
   FBody body1 = contacto.getBody1();
   FBody body2 =contacto.getBody2();
 
 
-
   if ((body1.getName() == "Mano" && body1.getName() == "botellaCoca") || body2.getName() == "Mano") {
-
-
     if (!abrirBotella.isPlaying()) {
       abrirBotella.play();
     }
-
-
     contador ++;
   }
   if (contador == 1) {
@@ -696,7 +572,6 @@ void contactStarted(FContact contacto) {
       ganaste.amp(.3);
       ganaste.play();
       cancion.stop();
-      //estoyVerde.pause();
     }
     pantalla = 2;
   }
@@ -713,14 +588,11 @@ void contactStarted(FContact contacto) {
     return;
   }
 
-  //desaparece la coca
   mundo.remove(coca);
-  //la vuelve a agregar al mundo
   mundo.add(coca);
 }
 
 void restart() {
-
   caja.setPosition(300, 200);
   botella.setPosition(200, 200);
   for (int i=0; i<dinosaurios.length; i++) {
@@ -729,7 +601,6 @@ void restart() {
 }
 
 void oscEvent(OscMessage m) {
-
 
   if (m.addrPattern().equals("/annotations/thumb")) {
     pulgar.x = map( m.get(9).floatValue(), 0, 1000, width, 0 );
